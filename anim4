@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Shoe Rotation</title>
+  <style> 
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .shoe {
+    width: 300px;
+    height: 200px;
+    perspective: 1000px;
+  }
+  
+  #shoeImage {
+    width: 100%;
+    height: 100%;
+    transition: transform 1s;
+  }
+</style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="shoe">
+      <img src="shoe-image.jpg" alt="Shoe" id="shoeImage">
+    </div>
+  </div>
+
+  <script>
+document.addEventListener("DOMContentLoaded", function() {
+  const shoeImage = document.getElementById("shoeImage");
+  
+  let rotation = 0;
+  
+  function rotateShoe() {
+    rotation += 5;
+    shoeImage.style.transform = `rotateY(${rotation}deg)`;
+    if (rotation < 360) {
+      requestAnimationFrame(rotateShoe);
+    }
+  }
+
+  rotateShoe();
+});
+
+</script>
+</body>
+</html>
